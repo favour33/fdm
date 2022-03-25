@@ -10,6 +10,7 @@ const Employees = () => {
     status: "",
   };
 
+  // information states
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
