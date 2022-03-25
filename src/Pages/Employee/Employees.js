@@ -3,81 +3,72 @@ import React, { useState } from "react";
 const Employees = () => {
   const claimList = {
     name: "",
-    desritpon: "",
+    description: "",
     amount: "",
     evidence: "",
     date: "",
-    stats: "",
+    status: "",
   };
 
   const [name, setName] = useState("");
-  const [desritpon, setDesritpon] = useState("");
+  const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [evidence, setEvidence] = useState("");
   const [date, setDate] = useState("");
-  const [stats, setStats] = useState("PENDING");
+  const [staus, setStatus] = useState("PENDING");
 
   return (
     <>
       <h1>Add A Claim </h1>
       <form>
-        <label htmlFor="name">Claim Name</label>
+        {/* Claim Name */}
+        <label>Claim Name</label>
         <input
           type="text"
-          id="name"
+          required
           onChange={(e) => {
             setName(e.target.value);
           }}
-          value={name}
         />
-        <hr />
-        <label htmlFor="desc">Claim Name</label>
+
+        {/* Claim Description  */}
+        <label>Claim Description</label>
         <textarea
-          id="desc"
           onChange={(e) => {
-            setDesritpon(e.target.value);
+            setDescription(e.target.value);
           }}
-          value={desritpon}
-        ></textarea>
-        <hr />
-        <label htmlFor="amount">Claim Amount</label>
+        />
+
+        {/* Claim Amount */}
+        <label>Claim Amount</label>
         <input
           type="text"
-          id="amount"
+          required
           onChange={(e) => {
             setAmount(e.target.value);
           }}
-          value={amount}
         />
-        <hr />
-        {/* <input type="file" /> */}
-        <label htmlFor="image">Add Image</label>
+
+        {/* claim Evidence */}
+        <label>Claim Evidence</label>
         <input
           type="text"
-          id="image"
+          required
           onChange={(e) => {
             setEvidence(e.target.value);
           }}
-          value={evidence}
         />
-        <hr />
+
+        {/* claim Date */}
+        <label>Claim Date</label>
         <input
           type="date"
+          required
           onChange={(e) => {
             setDate(e.target.value);
           }}
-          value={date}
         />
-        <hr />
-        <button>ADD CLAIM</button>
       </form>
-      <h1>All sent Claims </h1>
-      <p>Name: {name}</p>
-      <p>desritpon: {desritpon}</p>
-      <p>amount: {amount}</p>
-      <p>evidence: {evidence}</p>
-      <p>date: {date}</p>
-      <p>status: {stats}</p>
     </>
   );
 };
