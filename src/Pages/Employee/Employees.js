@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import "./Employees.css";
+import { Link } from "react-router-dom";
 
 const Employees = () => {
   const claimList = {
@@ -51,6 +52,7 @@ const Employees = () => {
 
   return (
     <>
+      <Link to="/">RETURN </Link>
       <h1>Add A Claim </h1>
       <form>
         {/* Claim Name */}
@@ -109,18 +111,40 @@ const Employees = () => {
           Add Claim
         </button>
       </form>
-      {users.map((user) => {
-        return (
-          <div key={user.id}>
-            <p>Name - {user.name}</p>
-            <p>Description - {user.description}</p>
-            <p>Amount - {user.amount}</p>
-            <p>Evidence - {user.evidence} </p>
-            <p>Date - {user.date}</p>
-            <p>Status - {user.status}</p>
-          </div>
-        );
-      })}
+      <h1>Pending</h1>
+      {users
+        .filter((user) => {
+          return user.status === "PENDING";
+        })
+        .map((user) => {
+          return (
+            <div key={user.id}>
+              <p>Name - {user.name}</p>
+              <p>Description - {user.description}</p>
+              <p>Amount - {user.amount}</p>
+              <p>Evidence - {user.evidence} </p>
+              <p>Date - {user.date}</p>
+              <p>Status - {user.status}</p>
+            </div>
+          );
+        })}
+      <h1>Added Claims</h1>
+      {users
+        .filter((user) => {
+          return user.status === "PROCESSED";
+        })
+        .map((user) => {
+          return (
+            <div key={user.id}>
+              <p>Name - {user.name}</p>
+              <p>Description - {user.description}</p>
+              <p>Amount - {user.amount}</p>
+              <p>Evidence - {user.evidence} </p>
+              <p>Date - {user.date}</p>
+              <p>Status - {user.status}</p>
+            </div>
+          );
+        })}
     </>
   );
 };
