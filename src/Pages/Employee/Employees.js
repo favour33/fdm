@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { db } from "../../firebase-config";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import "./Employees.css";
 
 const Employees = () => {
   const claimList = {
@@ -11,12 +14,40 @@ const Employees = () => {
   };
 
   // information states
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState("");
-  const [evidence, setEvidence] = useState("");
-  const [date, setDate] = useState("");
-  const [staus, setStatus] = useState("PENDING");
+  const [newName, setName] = useState("");
+  const [newDescription, setDescription] = useState("");
+  const [newAmount, setAmount] = useState(0);
+  const [newEvidence, setEvidence] = useState("");
+  const [newDate, setDate] = useState("");
+  const [newStatus, setStatus] = useState("PENDING");
+
+  // hold all the users
+  const [users, setUsers] = useState([]);
+  const usersCollectionRef = collection(db, "users");
+
+  const AddClaim = async () => {
+    // object of the new data we want to add
+    const payload = {
+      name: newName,
+      description: newDescription,
+      amount: newAmount,
+      evidence: newEvidence,
+      date: newDate,
+      status: newStatus,
+    };
+    await addDoc(usersCollectionRef, payload);
+  };
+
+  // We want to get the list of users as sound as someone opens up the website
+  useEffect(() => {
+    const getUsers = async () => {
+      // Making a call to the firestore database
+      const data = await getDocs(usersCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getUsers();
+  }, []);
 
   return (
     <>
@@ -26,7 +57,8 @@ const Employees = () => {
         <label>Claim Name</label>
         <input
           type="text"
-          required
+          // required
+          // value={newName}
           onChange={(e) => {
             setName(e.target.value);
           }}
@@ -35,6 +67,7 @@ const Employees = () => {
         {/* Claim Description  */}
         <label>Claim Description</label>
         <textarea
+          // value={newDescription}
           onChange={(e) => {
             setDescription(e.target.value);
           }}
@@ -43,8 +76,9 @@ const Employees = () => {
         {/* Claim Amount */}
         <label>Claim Amount</label>
         <input
-          type="text"
-          required
+          // value={newAmount}
+          type="number"
+          // required
           onChange={(e) => {
             setAmount(e.target.value);
           }}
@@ -53,8 +87,9 @@ const Employees = () => {
         {/* claim Evidence */}
         <label>Claim Evidence</label>
         <input
+          // value={newEvidence}
           type="text"
-          required
+          // required
           onChange={(e) => {
             setEvidence(e.target.value);
           }}
@@ -63,13 +98,29 @@ const Employees = () => {
         {/* claim Date */}
         <label>Claim Date</label>
         <input
+          // value={newDate}
           type="date"
-          required
+          // required
           onChange={(e) => {
             setDate(e.target.value);
           }}
         />
+        <button type="button" onClick={AddClaim}>
+          Add Claim
+        </button>
       </form>
+      {users.map((user) => {
+        return (
+          <div key={user.id}>
+            <p>Name - {user.name}</p>
+            <p>Description - {user.description}</p>
+            <p>Amount - {user.amount}</p>
+            <p>Evidence - {user.evidence} </p>
+            <p>Date - {user.date}</p>
+            <p>Status - {user.status}</p>
+          </div>
+        );
+      })}
     </>
   );
 };
