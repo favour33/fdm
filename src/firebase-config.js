@@ -1,6 +1,11 @@
 // Help connect to our database
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC4RDpVh3cEEZmqr4ZuEKjCB4aXx7f0KvM",
@@ -13,5 +18,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 
 export const db = getFirestore(app);
+
+export const signup = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};

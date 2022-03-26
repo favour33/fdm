@@ -1,12 +1,39 @@
 import React from "react";
+// import { useRef } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+// import { signup } from "../../firebase-config";
 
 const Login = () => {
+  // const emailRef = useRef();
+  // const passwordRef = useRef();
   const [s_username, setUserName] = useState("");
   const [s_password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
+  // const HandleSubmit = async () => {
+  //   await signup(emailRef.current.value, passwordRef.current.value);
+  // };
+
+  // return (
+  //   <div className="login-wrapper">
+  //     <h1>Please Log In</h1>
+  //     <form>
+  //       <label>
+  //         <p>Username</p>
+  //         <input ref={emailRef} id="username" type="text" required />
+  //       </label>
+  //       <label>
+  //         <p>Password</p>
+  //         <input ref={passwordRef} type="password" required />
+  //       </label>
+  //       <div>
+  //         <button onClick={HandleSubmit}>Log in</button>
+  //       </div>
+  //     </form>
+  //   </div>
+  // );
 
   // employees
   const employee_x = {
@@ -29,8 +56,8 @@ const Login = () => {
   const HandleSubmit = (e) => {
     e.preventDefault();
 
-    // const usernmayy = "e";
-    // const passwordy = "e";
+    //   // const usernmayy = "e";
+    //   // const passwordy = "e";
 
     if (
       (s_username === employee_x.username) &
@@ -49,6 +76,7 @@ const Login = () => {
       navigate("/finances");
     } else {
       navigate("/");
+      alert("Incorrect Username/Password");
       setUserName("");
       setPassword("");
     }

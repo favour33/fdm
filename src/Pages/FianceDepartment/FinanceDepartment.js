@@ -36,53 +36,100 @@ const FinanceDepartment = () => {
   };
   return (
     <>
-      <Link to="/">RETURN </Link>
+      <Link to="/">LOG OUT </Link>
 
       <h1>Claims to be processed</h1>
-      <div>
-        {users
-          .filter((user) => {
-            return user.status === "APPROVED ";
-          })
-          .map((user) => {
-            return (
-              <div key={user.id}>
-                <p>Name - {user.name}</p>
-                <p>Description - {user.description}</p>
-                <p>Amount - {user.amount}</p>
-                <p>Evidence - {user.evidence} </p>
-                <p>Date - {user.date}</p>
-                <p>Status - {user.status}</p>
-                <button
-                  onClick={() => {
-                    ProcessClaim(user.id, user.status);
-                  }}
-                >
-                  Process Claim
-                </button>
-              </div>
-            );
-          })}
-      </div>
-      <div>
-        <h1>Processed claims</h1>
-        {users
-          .filter((user) => {
-            return user.status === "PROCESSED";
-          })
-          .map((user) => {
-            return (
-              <div key={user.id}>
-                <p>Name - {user.name}</p>
-                <p>Description - {user.description}</p>
-                <p>Amount - {user.amount}</p>
-                <p>Evidence - {user.evidence} </p>
-                <p>Date - {user.date}</p>
-                <p>Status - {user.status}</p>
-              </div>
-            );
-          })}
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Image Evidence</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Process Button</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users
+            .filter((user) => {
+              return user.status === "APPROVED ";
+            })
+            .map((user) => {
+              return (
+                <tr key={user.id}>
+                  <td>Name - {user.name}</td>
+                  <td>Description - {user.description}</td>
+                  <td>Amount - {user.amount}</td>
+                  <td
+                    className="tol"
+                    onClick={() => {
+                      // window.location.href = "http://domain.com";
+                      window
+                        .open("https://receipt001.netlify.app", "_blank")
+                        .focus();
+                    }}
+                  >
+                    Image Evdience
+                  </td>
+                  <td>Date - {user.date}</td>
+                  <td>Status - {user.status}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        ProcessClaim(user.id, user.status);
+                      }}
+                    >
+                      Process Claim
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+      <h1>Processed claims</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Image Evidence</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users
+            .filter((user) => {
+              return user.status === "PROCESSED";
+            })
+            .map((user) => {
+              return (
+                <tr key={user.id}>
+                  <td>Name - {user.name}</td>
+                  <td>Description - {user.description}</td>
+                  <td>Amount - {user.amount}</td>
+                  <td
+                    className="tol"
+                    onClick={() => {
+                      // window.location.href = "http://domain.com";
+                      window
+                        .open("https://receipt001.netlify.app", "_blank")
+                        .focus();
+                    }}
+                  >
+                    Image Evdience
+                  </td>
+                  <td>Date - {user.date}</td>
+                  <td>Status - {user.status}</td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     </>
   );
 };

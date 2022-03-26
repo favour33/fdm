@@ -3,6 +3,8 @@ import { db } from "../../firebase-config";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import "./Employees.css";
 import { Link } from "react-router-dom";
+import Profile from "../../components/Profile/Profile";
+import PopUP from "../../components/PopUP/PopUP";
 
 const Employees = () => {
   const claimList = {
@@ -18,7 +20,7 @@ const Employees = () => {
   const [newName, setName] = useState("");
   const [newDescription, setDescription] = useState("");
   const [newAmount, setAmount] = useState(0);
-  const [newEvidence, setEvidence] = useState("");
+  const [newEvidence, setEvidence] = useState("https://receipt001.netlify.app");
   const [newDate, setDate] = useState("");
   const [newStatus, setStatus] = useState("PENDING");
 
@@ -26,12 +28,16 @@ const Employees = () => {
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "users");
 
+  const [buttonPopUp, setButtonPopUp] = useState(false);
+
+  const [currencyGained, setCurrencyGained] = useState(0);
   const AddClaim = async () => {
     // object of the new data we want to add
     const payload = {
       name: newName,
       description: newDescription,
-      amount: newAmount,
+      // amount: newAmount,
+      amount: currencyGained === 0 ? newAmount : currencyGained,
       evidence: newEvidence,
       date: newDate,
       status: newStatus,
@@ -52,7 +58,7 @@ const Employees = () => {
 
   return (
     <>
-      <Link to="/">RETURN </Link>
+      <Link to="/">LOG OUT </Link>
       <h1>Add A Claim </h1>
       <form>
         {/* Claim Name */}
@@ -80,22 +86,71 @@ const Employees = () => {
         <input
           // value={newAmount}
           type="number"
+          // value={newAmount}
+          value={currencyGained === 0 ? newAmount : currencyGained}
           // required
           onChange={(e) => {
-            setAmount(e.target.value);
+            currencyGained === 0
+              ? setAmount(e.target.value)
+              : setCurrencyGained(currencyGained);
           }}
         />
+
+        {/* Convert cuurency PopUp  */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            setButtonPopUp(true);
+          }}
+        >
+          Convert Currency
+        </button>
+        <PopUP trigger={buttonPopUp} setTrigger={setButtonPopUp}>
+          <p>You can convert your claim amount into any currency you want</p>
+          <div>
+            <div className="first">
+              <p>Currency you gained the expense in</p>
+              <select>
+                <option value="0">Currency:</option>
+                <option value="1">EUR</option>
+                <option value="2">GBP</option>
+                <option value="2">DOL</option>
+              </select>
+              <label>Amount</label>
+              <input
+                // value={currencyGained}
+                onChange={(e) => {
+                  setCurrencyGained(e.target.value * 1.5);
+                  console.log(currencyGained);
+                }}
+                type="number"
+                placeholder="Amount"
+              />
+            </div>
+            <div className="second">
+              <p>Currency you wan to covert the expense to</p>
+              <select>
+                <option value="0">Currency:</option>
+                <option value="1">EUR</option>
+                <option value="2">GBP</option>
+                <option value="2">DOL</option>
+              </select>
+            </div>
+          </div>
+        </PopUP>
 
         {/* claim Evidence */}
         <label>Claim Evidence</label>
         <input
           // value={newEvidence}
-          type="text"
+          type="file"
           // required
           onChange={(e) => {
             setEvidence(e.target.value);
           }}
         />
+        <Profile />
 
         {/* claim Date */}
         <label>Claim Date</label>
@@ -112,41 +167,103 @@ const Employees = () => {
         </button>
       </form>
       <h1>Pending</h1>
-      {users
-        .filter((user) => {
-          return user.status === "PENDING";
-        })
-        .map((user) => {
-          return (
-            <div key={user.id}>
-              <p>Name - {user.name}</p>
-              <p>Description - {user.description}</p>
-              <p>Amount - {user.amount}</p>
-              <p>Evidence - {user.evidence} </p>
-              <p>Date - {user.date}</p>
-              <p>Status - {user.status}</p>
-            </div>
-          );
-        })}
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Image Evidence</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {users
+            .filter((user) => {
+              return user.status === "PENDING";
+            })
+            .map((user) => {
+              return (
+                <tr key={user.id}>
+                  <td>Name - {user.name}</td>
+                  <td>Description - {user.description}</td>
+                  <td>Amount - {user.amount}</td>
+                  {/* <p>Evidence - {user.evidence} </p> */}
+                  <td
+                    className="tol"
+                    onClick={() => {
+                      // window.location.href = "http://domain.com";
+                      window
+                        .open("https://receipt001.netlify.app", "_blank")
+                        .focus();
+                    }}
+                  >
+                    Image Evdience
+                  </td>
+                  {/* <p>{(window.location.href = 'http://domain.com';)}</p> */}
+
+                  <td>Date - {user.date}</td>
+                  <td>Status - {user.status}</td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
       <h1>Added Claims</h1>
-      {users
-        .filter((user) => {
-          return user.status === "PROCESSED";
-        })
-        .map((user) => {
-          return (
-            <div key={user.id}>
-              <p>Name - {user.name}</p>
-              <p>Description - {user.description}</p>
-              <p>Amount - {user.amount}</p>
-              <p>Evidence - {user.evidence} </p>
-              <p>Date - {user.date}</p>
-              <p>Status - {user.status}</p>
-            </div>
-          );
-        })}
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Image Evidence</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {users
+            .filter((user) => {
+              return (
+                user.status === "DECLINED" ||
+                user.status === "PROCESSED" ||
+                user.status === "APPROVED"
+              );
+            })
+            .map((user) => {
+              return (
+                <tr key={user.id}>
+                  <td>Name - {user.name}</td>
+                  <td>Description - {user.description}</td>
+                  <td>Amount - {user.amount}</td>
+                  {/* <p>Evidence - {user.evidence} </p> */}
+                  <td
+                    className="tol"
+                    onClick={() => {
+                      // window.location.href = "http://domain.com";
+                      window
+                        .open("https://receipt001.netlify.app", "_blank")
+                        .focus();
+                    }}
+                  >
+                    Image Evdience
+                  </td>
+                  {/* <p>{(window.location.href = 'http://domain.com';)}</p> */}
+
+                  <td>Date - {user.date}</td>
+                  <td>Status - {user.status}</td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     </>
   );
 };
 
 export default Employees;
+
+//return user.status === "PENDING";

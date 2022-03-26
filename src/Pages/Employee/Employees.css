@@ -2,3 +2,7 @@ input,
 textarea {
   display: block;
 }
+
+.tol {
+  text-decoration: underline;
+}
