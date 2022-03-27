@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { signup } from "../../firebase-config";
+import "./Login.css";
 
 const Login = () => {
   // const emailRef = useRef();
@@ -89,7 +90,7 @@ const Login = () => {
 
   return (
     <div className="login-wrapper">
-      <h1>Please Log In</h1>
+      <h1>Log In</h1>
       <form onSubmit={HandleSubmit}>
         <label>
           <p>Username</p>
@@ -111,7 +112,9 @@ const Login = () => {
           />
         </label>
         <div>
-          <button type="submit">Submit</button>
+          <button className="submit-button" type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </div>

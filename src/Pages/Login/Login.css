@@ -1,0 +1,59 @@
+/* light black - #202025 */
+/* light grey - #E0E0E0 */
+/* light blue - #2EABE3 */
+
+form {
+  position: relative;
+}
+
+.login-wrapper {
+  margin-top: 300px;
+  margin-left: 10px;
+  border: solid 1px black;
+  width: 50%;
+  margin-left: 150px;
+  padding-left: 20px;
+  height: 350px;
+  border-radius: 3px;
+}
+
+textarea,
+input {
+  background-color: #e0e0e0;
+  color: #666666;
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  outline: none;
+  font-size: 16px;
+  line-height: 1.4;
+  transition: all 0.2s;
+}
+
+textarea:hover,
+input:hover {
+  cursor: pointer;
+  background-color: #f0efef;
+}
+
+textarea:focus,
+input:focus {
+  cursor: text;
+  color: #333333;
+  background-color: white;
+
+  border-color: #333333;
+}
+
+.submit-button {
+  background-color: #202025;
+  color: none;
+  border: none;
+  padding: 10px;
+  color: white;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}

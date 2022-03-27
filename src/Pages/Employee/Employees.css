@@ -1,8 +1,106 @@
+/* light black - #202025 */
+/* light grey - #E0E0E0 */
+/* light blue - #2EABE3 */
+
 input,
-textarea {
+textarea,
+button {
   display: block;
 }
 
-.tol {
-  text-decoration: underline;
+.employyes {
+  border: solid 2px black;
+  padding-left: 20px;
+  position: relative;
 }
+
+.link {
+  background-color: black;
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  padding: 20px;
+  border-radius: 40px;
+}
+
+.link span {
+  padding-top: 30px;
+  text-decoration: none;
+}
+
+.employyes input {
+  margin-bottom: 20px;
+}
+
+.claim-section {
+  margin-top: 20px;
+  display: flex;
+}
+
+.claim-amount-input {
+  margin-top: 20px;
+}
+
+.cl {
+  display: inline;
+}
+
+button {
+  background-color: #1d88ec;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.claim-evidence-text-box {
+  background: none;
+}
+
+.claim-evidence-text-box::-webkit-file-upload-button {
+  background-color: #1d88ec;
+  padding: 10px 10px 30px 10px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.add-claim-button {
+  background-color: black;
+}
+
+.convert-currency {
+  margin-top: 20px;
+  height: 40px;
+  padding: 3px;
+}
+
+table {
+  border: solid 1px black;
+  border-radius: 10px;
+}
+
+thead {
+  background-color: black;
+  color: white;
+  border-radius: 3px;
+}
+
+th {
+  padding: 10px;
+}
+
+td {
+  background-color: lightgrey;
+  padding: 8px;
+}
+
+/* p,
+td,
+span,
+h1,
+th,
+label {
+  font-family: "Montserrat", sans-serif;
+} */

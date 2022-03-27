@@ -57,14 +57,17 @@ const Employees = () => {
   }, []);
 
   return (
-    <>
-      <Link to="/">LOG OUT </Link>
+    <div className="employyes">
+      <Link className="link" to="/">
+        <span>LOG OUT</span>
+      </Link>
       <h1>Add A Claim </h1>
       <form>
         {/* Claim Name */}
         <label>Claim Name</label>
         <input
           type="text"
+          required
           // required
           // value={newName}
           onChange={(e) => {
@@ -82,30 +85,34 @@ const Employees = () => {
         />
 
         {/* Claim Amount */}
-        <label>Claim Amount</label>
-        <input
-          // value={newAmount}
-          type="number"
-          // value={newAmount}
-          value={currencyGained === 0 ? newAmount : currencyGained}
-          // required
-          onChange={(e) => {
-            currencyGained === 0
-              ? setAmount(e.target.value)
-              : setCurrencyGained(currencyGained);
-          }}
-        />
 
-        {/* Convert cuurency PopUp  */}
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            setButtonPopUp(true);
-          }}
-        >
-          Convert Currency
-        </button>
+        <div className="claim-section">
+          <input
+            className="claim-amount-input"
+            // value={newAmount}
+            type="number"
+            // value={newAmount}
+            value={currencyGained === 0 ? newAmount : currencyGained}
+            // required
+            onChange={(e) => {
+              currencyGained === 0
+                ? setAmount(e.target.value)
+                : setCurrencyGained(currencyGained);
+            }}
+          />
+
+          {/* Convert cuurency PopUp  */}
+          <button
+            className="convert-currency"
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              setButtonPopUp(true);
+            }}
+          >
+            Convert Currency
+          </button>
+        </div>
         <PopUP trigger={buttonPopUp} setTrigger={setButtonPopUp}>
           <p>You can convert your claim amount into any currency you want</p>
           <div>
@@ -143,6 +150,7 @@ const Employees = () => {
         {/* claim Evidence */}
         <label>Claim Evidence</label>
         <input
+          className="claim-evidence-text-box"
           // value={newEvidence}
           type="file"
           // required
@@ -150,7 +158,6 @@ const Employees = () => {
             setEvidence(e.target.value);
           }}
         />
-        <Profile />
 
         {/* claim Date */}
         <label>Claim Date</label>
@@ -162,7 +169,7 @@ const Employees = () => {
             setDate(e.target.value);
           }}
         />
-        <button type="button" onClick={AddClaim}>
+        <button className="add-claim-button" type="button" onClick={AddClaim}>
           Add Claim
         </button>
       </form>
@@ -187,9 +194,9 @@ const Employees = () => {
             .map((user) => {
               return (
                 <tr key={user.id}>
-                  <td>Name - {user.name}</td>
-                  <td>Description - {user.description}</td>
-                  <td>Amount - {user.amount}</td>
+                  <td> {user.name}</td>
+                  <td>{user.description}</td>
+                  <td> {user.amount}</td>
                   {/* <p>Evidence - {user.evidence} </p> */}
                   <td
                     className="tol"
@@ -200,12 +207,12 @@ const Employees = () => {
                         .focus();
                     }}
                   >
-                    Image Evdience
+                    receipt001
                   </td>
                   {/* <p>{(window.location.href = 'http://domain.com';)}</p> */}
 
-                  <td>Date - {user.date}</td>
-                  <td>Status - {user.status}</td>
+                  <td>{user.date}</td>
+                  <td> {user.status}</td>
                 </tr>
               );
             })}
@@ -228,7 +235,7 @@ const Employees = () => {
           {users
             .filter((user) => {
               return (
-                user.status === "DECLINED" ||
+                user.status === "DECLINED " ||
                 user.status === "PROCESSED" ||
                 user.status === "APPROVED"
               );
@@ -236,9 +243,9 @@ const Employees = () => {
             .map((user) => {
               return (
                 <tr key={user.id}>
-                  <td>Name - {user.name}</td>
-                  <td>Description - {user.description}</td>
-                  <td>Amount - {user.amount}</td>
+                  <td> {user.name}</td>
+                  <td> {user.description}</td>
+                  <td> {user.amount}</td>
                   {/* <p>Evidence - {user.evidence} </p> */}
                   <td
                     className="tol"
@@ -249,18 +256,18 @@ const Employees = () => {
                         .focus();
                     }}
                   >
-                    Image Evdience
+                    receipt001
                   </td>
                   {/* <p>{(window.location.href = 'http://domain.com';)}</p> */}
 
-                  <td>Date - {user.date}</td>
-                  <td>Status - {user.status}</td>
+                  <td> {user.date}</td>
+                  <td> {user.status}</td>
                 </tr>
               );
             })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

@@ -64,54 +64,60 @@ const Manager = () => {
             <th>Image Evidence</th>
             <th>Date</th>
             <th>Status</th>
-            <th>Approve/Decline</th>
+            <th>Approve</th>
+            <th>Decline</th>
           </tr>
         </thead>
+
+        <tbody>
+          {users
+            .filter((user) => {
+              return user.status === "PENDING";
+            })
+            .map((user) => {
+              return (
+                <tr key={user.id}>
+                  <td> {user.name}</td>
+                  <td> {user.description}</td>
+                  <td>{user.amount}</td>
+                  <td
+                    className="tol"
+                    onClick={() => {
+                      // window.location.href = "http://domain.com";
+                      window
+                        .open("https://receipt001.netlify.app", "_blank")
+                        .focus();
+                    }}
+                  >
+                    receipt001
+                  </td>
+                  <td> {user.date}</td>
+                  <td>{user.status}</td>
+                  <td>
+                    {" "}
+                    <button
+                      onClick={() => {
+                        approve(user.id, user.status);
+                      }}
+                    >
+                      Approved
+                    </button>
+                  </td>
+                  <td>
+                    {" "}
+                    <button
+                      onClick={() => {
+                        decline(user.id, user.status);
+                      }}
+                    >
+                      Declined
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
       </table>
-      <tbody>
-        {users
-          .filter((user) => {
-            return user.status === "PENDING";
-          })
-          .map((user) => {
-            return (
-              <tr key={user.id}>
-                <td>Name - {user.name}</td>
-                <td>Description - {user.description}</td>
-                <td>Amount - {user.amount}</td>
-                <td
-                  className="tol"
-                  onClick={() => {
-                    // window.location.href = "http://domain.com";
-                    window
-                      .open("https://receipt001.netlify.app", "_blank")
-                      .focus();
-                  }}
-                >
-                  Image Evdience
-                </td>
-                <td>Date - {user.date}</td>
-                <td>Status - {user.status}</td>
-                <td>
-                  <button
-                    onClick={() => {
-                      approve(user.id, user.status);
-                    }}
-                  >
-                    Approved
-                  </button>
-                  <button
-                    onClick={() => {
-                      decline(user.id, user.status);
-                    }}
-                  >
-                    Declined
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-      </tbody>
       {/*  */}
       <h1>Approved/declined Claims</h1>
       <table>
@@ -133,9 +139,9 @@ const Manager = () => {
             .map((user) => {
               return (
                 <tr key={user.id}>
-                  <td>Name - {user.name}</td>
-                  <td>Description - {user.description}</td>
-                  <td>Amount - {user.amount}</td>
+                  <td> {user.name}</td>
+                  <td> {user.description}</td>
+                  <td> {user.amount}</td>
                   <td
                     className="tol"
                     onClick={() => {
@@ -145,10 +151,10 @@ const Manager = () => {
                         .focus();
                     }}
                   >
-                    Image Evdience
+                    receipt001
                   </td>
-                  <td>Date - {user.date}</td>
-                  <td>Status - {user.status}</td>
+                  <td>{user.date}</td>
+                  <td> {user.status}</td>
                 </tr>
               );
             })}

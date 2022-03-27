@@ -5,6 +5,7 @@ import Manager from "../Pages/Manger/Manager";
 import Finance from "../Pages/FianceDepartment/FinanceDepartment";
 import NotFound from "../Pages/NotFound/NotFound";
 
+import "../App.css";
 const App = () => {
   return (
     <>
