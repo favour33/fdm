@@ -9,6 +9,7 @@ const PopUP = (props) => {
           className="close-btn"
           onClick={() => {
             props.setTrigger(false);
+            props.setTrigger2(false);
           }}
         >
           Convert

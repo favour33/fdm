@@ -29,11 +29,12 @@ const Employees = () => {
   const usersCollectionRef = collection(db, "users");
 
   const [buttonPopUp, setButtonPopUp] = useState(false);
+  const [buttonPopUp2, setButtonPopUp2] = useState(true);
 
   const [currencyGained, setCurrencyGained] = useState(0);
   const AddClaim = async () => {
-    newName === ""
-      ? alert("You cannot sumbit an Empty claim")
+    newName === "" || newDescription === "" || newAmount === ""
+      ? alert("Cannot submit an empty claim")
       : await addDoc(usersCollectionRef, {
           name: newName,
           description: newDescription,
