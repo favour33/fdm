@@ -32,17 +32,31 @@ const Employees = () => {
 
   const [currencyGained, setCurrencyGained] = useState(0);
   const AddClaim = async () => {
+    newName === ""
+      ? alert("You cannot sumbit an Empty claim")
+      : await addDoc(usersCollectionRef, {
+          name: newName,
+          description: newDescription,
+          // amount: newAmount,
+          amount: currencyGained === 0 ? newAmount : currencyGained,
+          evidence: newEvidence,
+          date: newDate,
+          status: newStatus,
+        });
+    window.location.reload();
+
     // object of the new data we want to add
-    const payload = {
-      name: newName,
-      description: newDescription,
-      // amount: newAmount,
-      amount: currencyGained === 0 ? newAmount : currencyGained,
-      evidence: newEvidence,
-      date: newDate,
-      status: newStatus,
-    };
-    await addDoc(usersCollectionRef, payload);
+    // const payload = {
+    //   name: newName,
+    //   description: newDescription,
+    //   // amount: newAmount,
+    //   amount: currencyGained === 0 ? newAmount : currencyGained,
+    //   evidence: newEvidence,
+    //   date: newDate,
+    //   status: newStatus,
+    // };
+    // await addDoc(usersCollectionRef, payload);
+    // window.location.reload();
   };
 
   // We want to get the list of users as sound as someone opens up the website
@@ -123,7 +137,7 @@ const Employees = () => {
           <p>You can convert your claim amount into any currency you want</p>
           <div>
             <div className="first">
-              <p>Currency you gained the expense in</p>
+              <p>Currency you gained the expense in: </p>
               <select>
                 <option value="0">Currency:</option>
                 <option value="1">EUR</option>
@@ -134,7 +148,7 @@ const Employees = () => {
               <input
                 // value={currencyGained}
                 onChange={(e) => {
-                  setCurrencyGained(e.target.value * 1.5);
+                  setCurrencyGained(e.target.value * 0.84);
                   console.log(currencyGained);
                 }}
                 type="number"
@@ -142,7 +156,7 @@ const Employees = () => {
               />
             </div>
             <div className="second">
-              <p>Currency you wan to covert the expense to</p>
+              <p>Currency you want to covert the expense to</p>
               <select>
                 <option value="0">Currency:</option>
                 <option value="1">EUR</option>
@@ -202,10 +216,9 @@ const Employees = () => {
                 <tr key={user.id}>
                   <td> {user.name}</td>
                   <td>{user.description}</td>
-                  <td> {user.amount}</td>
+                  <td>£ {user.amount}</td>
                   {/* <p>Evidence - {user.evidence} </p> */}
                   <td
-                    className="tol"
                     onClick={() => {
                       // window.location.href = "http://domain.com";
                       window
@@ -213,7 +226,7 @@ const Employees = () => {
                         .focus();
                     }}
                   >
-                    receipt001
+                    <span className="image-link">receipt001 </span>
                   </td>
                   {/* <p>{(window.location.href = 'http://domain.com';)}</p> */}
 
@@ -251,7 +264,7 @@ const Employees = () => {
                 <tr key={user.id}>
                   <td> {user.name}</td>
                   <td> {user.description}</td>
-                  <td> {user.amount}</td>
+                  <td>£ {user.amount}</td>
                   {/* <p>Evidence - {user.evidence} </p> */}
                   <td
                     className="tol"
@@ -262,7 +275,7 @@ const Employees = () => {
                         .focus();
                     }}
                   >
-                    receipt001
+                    <span className="image-link">receipt001 </span>
                   </td>
                   {/* <p>{(window.location.href = 'http://domain.com';)}</p> */}
 

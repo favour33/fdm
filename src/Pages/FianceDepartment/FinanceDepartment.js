@@ -33,6 +33,7 @@ const FinanceDepartment = () => {
     const userDoc = doc(db, "users", id);
     const newStatus = { status: "PROCESSED" };
     await updateDoc(userDoc, newStatus);
+    window.location.reload();
   };
   return (
     <>
@@ -63,7 +64,7 @@ const FinanceDepartment = () => {
                 <tr key={user.id}>
                   <td>{user.name}</td>
                   <td>{user.description}</td>
-                  <td> {user.amount}</td>
+                  <td>£ {user.amount}</td>
                   <td
                     className="tol"
                     onClick={() => {
@@ -73,7 +74,7 @@ const FinanceDepartment = () => {
                         .focus();
                     }}
                   >
-                    receipt001
+                    <span className="image-link">receipt001 </span>
                   </td>
                   <td>{user.date}</td>
                   <td>{user.status}</td>
@@ -114,7 +115,7 @@ const FinanceDepartment = () => {
                 <tr key={user.id}>
                   <td>{user.name}</td>
                   <td> {user.description}</td>
-                  <td> {user.amount}</td>
+                  <td>£ {user.amount}</td>
                   <td
                     className="tol"
                     onClick={() => {
@@ -124,7 +125,7 @@ const FinanceDepartment = () => {
                         .focus();
                     }}
                   >
-                    receipt001
+                    <span className="image-link">receipt001 </span>
                   </td>
                   <td> {user.date}</td>
                   <td>{user.status}</td>

@@ -76,13 +76,29 @@ input:focus {
 .approve-claim {
   background-color: rgb(4, 167, 4);
   font-weight: bold;
+  transition: 0.15s;
 }
+
+.approve-claim:hover {
+  background-color: rgb(89, 175, 132);
+}
+
 .decline-claim {
   background-color: red;
   font-weight: bold;
+  transition: 0.15s;
+}
+
+.decline-claim:hover {
+  background-color: rgb(245, 126, 126);
 }
 
 /* finance-department button */
 .process-claim {
   font-weight: bold;
+  transition: 0.15s;
+}
+
+.process-claim:hover {
+  background-color: #7b9af0;
 }

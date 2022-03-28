@@ -43,12 +43,14 @@ const Manager = () => {
     const userDoc = doc(db, "users", id);
     const newStatus = { status: "APPROVED " };
     await updateDoc(userDoc, newStatus);
+    window.location.reload();
   };
 
   const decline = async (id, status) => {
     const userDoc = doc(db, "users", id);
     const newStatus = { status: "DECLINED " };
     await updateDoc(userDoc, newStatus);
+    window.location.reload();
   };
 
   return (
@@ -56,7 +58,7 @@ const Manager = () => {
       <Link className="link" to="/">
         LOG OUT{" "}
       </Link>
-      <h1>Claims yet to be approvved</h1>
+      <h1>Claims yet to be Approved</h1>
       <table>
         <thead>
           <tr>
@@ -81,7 +83,7 @@ const Manager = () => {
                 <tr key={user.id}>
                   <td> {user.name}</td>
                   <td> {user.description}</td>
-                  <td>{user.amount}</td>
+                  <td>£ {user.amount}</td>
                   <td
                     className="tol"
                     onClick={() => {
@@ -91,7 +93,7 @@ const Manager = () => {
                         .focus();
                     }}
                   >
-                    receipt001
+                    <span className="image-link">receipt001 </span>
                   </td>
                   <td> {user.date}</td>
                   <td>{user.status}</td>
@@ -103,7 +105,7 @@ const Manager = () => {
                         approve(user.id, user.status);
                       }}
                     >
-                      Approved
+                      Approve
                     </button>
                   </td>
                   <td>
@@ -114,7 +116,7 @@ const Manager = () => {
                         decline(user.id, user.status);
                       }}
                     >
-                      Declined
+                      Decline
                     </button>
                   </td>
                 </tr>
@@ -145,7 +147,7 @@ const Manager = () => {
                 <tr key={user.id}>
                   <td> {user.name}</td>
                   <td> {user.description}</td>
-                  <td> {user.amount}</td>
+                  <td>£ {user.amount}</td>
                   <td
                     className="tol"
                     onClick={() => {
@@ -155,7 +157,7 @@ const Manager = () => {
                         .focus();
                     }}
                   >
-                    receipt001
+                    <span className="image-link">receipt001 </span>
                   </td>
                   <td>{user.date}</td>
                   <td> {user.status}</td>

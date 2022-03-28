@@ -147,3 +147,12 @@ th,
 label {
   font-family: "Montserrat", sans-serif;
 } */
+
+.image-link {
+  color: #1d88ec;
+  text-decoration: underline;
+}
+
+.image-link:hover {
+  cursor: pointer;
+}
