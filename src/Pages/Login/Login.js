@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { signup } from "../../firebase-config";
 import "./Login.css";
+import white from "../../logos/fdm-white.png";
 
 const Login = () => {
   // const emailRef = useRef();
@@ -92,6 +93,7 @@ const Login = () => {
     <div className="login-wrapper">
       <h1>Log In</h1>
       <form onSubmit={HandleSubmit}>
+        <img className="fdm-logo-white" src={white} alt="fdm logo"></img>
         <label>
           <p>Username</p>
           <input
@@ -112,6 +114,7 @@ const Login = () => {
           />
         </label>
         <div>
+          <p className="forgot-password">Forgot Password?</p>
           <button className="submit-button" type="submit">
             Submit
           </button>

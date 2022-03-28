@@ -36,7 +36,9 @@ const FinanceDepartment = () => {
   };
   return (
     <>
-      <Link to="/">LOG OUT </Link>
+      <Link className="link" to="/">
+        LOG OUT{" "}
+      </Link>
 
       <h1>Claims to be processed</h1>
       <table>
@@ -59,9 +61,9 @@ const FinanceDepartment = () => {
             .map((user) => {
               return (
                 <tr key={user.id}>
-                  <td>Name - {user.name}</td>
-                  <td>Description - {user.description}</td>
-                  <td>Amount - {user.amount}</td>
+                  <td>{user.name}</td>
+                  <td>{user.description}</td>
+                  <td> {user.amount}</td>
                   <td
                     className="tol"
                     onClick={() => {
@@ -71,12 +73,13 @@ const FinanceDepartment = () => {
                         .focus();
                     }}
                   >
-                    Image Evdience
+                    receipt001
                   </td>
-                  <td>Date - {user.date}</td>
-                  <td>Status - {user.status}</td>
+                  <td>{user.date}</td>
+                  <td>{user.status}</td>
                   <td>
                     <button
+                      className="process-claim"
                       onClick={() => {
                         ProcessClaim(user.id, user.status);
                       }}
@@ -109,9 +112,9 @@ const FinanceDepartment = () => {
             .map((user) => {
               return (
                 <tr key={user.id}>
-                  <td>Name - {user.name}</td>
-                  <td>Description - {user.description}</td>
-                  <td>Amount - {user.amount}</td>
+                  <td>{user.name}</td>
+                  <td> {user.description}</td>
+                  <td> {user.amount}</td>
                   <td
                     className="tol"
                     onClick={() => {
@@ -121,10 +124,10 @@ const FinanceDepartment = () => {
                         .focus();
                     }}
                   >
-                    Image Evdience
+                    receipt001
                   </td>
-                  <td>Date - {user.date}</td>
-                  <td>Status - {user.status}</td>
+                  <td> {user.date}</td>
+                  <td>{user.status}</td>
                 </tr>
               );
             })}

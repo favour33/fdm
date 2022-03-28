@@ -53,7 +53,9 @@ const Manager = () => {
 
   return (
     <div>
-      <Link to="/">LOG OUT </Link>
+      <Link className="link" to="/">
+        LOG OUT{" "}
+      </Link>
       <h1>Claims yet to be approvved</h1>
       <table>
         <thead>
@@ -96,6 +98,7 @@ const Manager = () => {
                   <td>
                     {" "}
                     <button
+                      className="approve-claim"
                       onClick={() => {
                         approve(user.id, user.status);
                       }}
@@ -106,6 +109,7 @@ const Manager = () => {
                   <td>
                     {" "}
                     <button
+                      className="decline-claim"
                       onClick={() => {
                         decline(user.id, user.status);
                       }}

@@ -78,6 +78,7 @@ const Employees = () => {
         {/* Claim Description  */}
         <label>Claim Description</label>
         <textarea
+          className="claim-desc"
           // value={newDescription}
           onChange={(e) => {
             setDescription(e.target.value);
@@ -87,31 +88,36 @@ const Employees = () => {
         {/* Claim Amount */}
 
         <div className="claim-section">
-          <input
-            className="claim-amount-input"
-            // value={newAmount}
-            type="number"
-            // value={newAmount}
-            value={currencyGained === 0 ? newAmount : currencyGained}
-            // required
-            onChange={(e) => {
-              currencyGained === 0
-                ? setAmount(e.target.value)
-                : setCurrencyGained(currencyGained);
-            }}
-          />
+          <label>Claim Amount</label>
+          <div className="s1">
+            <input
+              className="claim-amount-input"
+              // value={newAmount}
+              type="number"
+              // value={newAmount}
+              value={currencyGained === 0 ? newAmount : currencyGained}
+              // required
+              onChange={(e) => {
+                currencyGained === 0
+                  ? setAmount(e.target.value)
+                  : setCurrencyGained(currencyGained);
+              }}
+            />
 
-          {/* Convert cuurency PopUp  */}
-          <button
-            className="convert-currency"
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              setButtonPopUp(true);
-            }}
-          >
-            Convert Currency
-          </button>
+            <div className="s2">
+              {/* Convert cuurency PopUp  */}
+              <button
+                className="convert-currency"
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setButtonPopUp(true);
+                }}
+              >
+                Convert Currency
+              </button>
+            </div>
+          </div>
         </div>
         <PopUP trigger={buttonPopUp} setTrigger={setButtonPopUp}>
           <p>You can convert your claim amount into any currency you want</p>

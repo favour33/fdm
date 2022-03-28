@@ -2,10 +2,6 @@
 /* light grey - #E0E0E0 */
 /* light blue - #2EABE3 */
 
-form {
-  position: relative;
-}
-
 .login-wrapper {
   margin-top: 300px;
   margin-left: 10px;
@@ -13,8 +9,20 @@ form {
   width: 50%;
   margin-left: 150px;
   padding-left: 20px;
-  height: 350px;
+  height: 400px;
   border-radius: 3px;
+  position: relative;
+}
+
+.login-wrapper .fdm-logo-white {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+}
+
+.forgot-password {
+  color: #527bec;
 }
 
 textarea,
@@ -56,4 +64,25 @@ input:focus {
   margin-top: 25px;
   margin-bottom: 10px;
   border-radius: 3px;
+  transition: 0.15s;
+}
+
+.submit-button:hover {
+  background-color: #3c3c44;
+}
+
+/* manager approve/decline buttons */
+
+.approve-claim {
+  background-color: rgb(4, 167, 4);
+  font-weight: bold;
+}
+.decline-claim {
+  background-color: red;
+  font-weight: bold;
+}
+
+/* finance-department button */
+.process-claim {
+  font-weight: bold;
 }
