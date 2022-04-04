@@ -5,14 +5,16 @@ import { Link, useNavigate } from "react-router-dom";
 // import { signup } from "../../firebase-config";
 import "./Login.css";
 import white from "../../logos/fdm-white.png";
+import Message from "../../components/Message/Message";
 
 const Login = () => {
   // const emailRef = useRef();
   // const passwordRef = useRef();
   const [s_username, setUserName] = useState("");
   const [s_password, setPassword] = useState("");
-
   const navigate = useNavigate();
+
+  const [wrongPassword, setWrongPassword] = useState(false);
 
   // const HandleSubmit = async () => {
   //   await signup(emailRef.current.value, passwordRef.current.value);
@@ -77,8 +79,11 @@ const Login = () => {
     ) {
       navigate("/finances");
     } else {
-      navigate("/");
-      alert("Incorrect Username/Password");
+      // navigate("/");
+      // alert("Incorrect Username/Password");
+      // setUserName("");
+      // setPassword("");
+      setWrongPassword(!wrongPassword);
       setUserName("");
       setPassword("");
     }
@@ -91,35 +96,55 @@ const Login = () => {
 
   return (
     <div className="login-wrapper">
-      <h1>Log In</h1>
-      <form onSubmit={HandleSubmit}>
-        <img className="fdm-logo-white" src={white} alt="fdm logo"></img>
-        <label>
-          <p>Username</p>
-          <input
-            id="username"
-            type="text"
-            onChange={(e) => setUserName(e.target.value)}
-            value={s_username}
-            required
-          />
-        </label>
-        <label>
-          <p>Password</p>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={s_password}
-            required
-          />
-        </label>
-        <div>
-          <p className="forgot-password">Forgot Password?</p>
-          <button className="submit-button" type="submit">
-            Submit
-          </button>
-        </div>
-      </form>
+      {wrongPassword === false ? (
+        <>
+          <h1>Log In</h1>
+          <form onSubmit={HandleSubmit}>
+            <img className="fdm-logo-white" src={white} alt="fdm logo"></img>
+            <label>
+              <p>Username</p>
+              <input
+                id="username"
+                type="text"
+                onChange={(e) => setUserName(e.target.value)}
+                value={s_username}
+                required
+              />
+            </label>
+            <label>
+              <p>Password</p>
+              <input
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={s_password}
+                required
+              />
+            </label>
+            <div>
+              <p className="forgot-password">Forgot Password?</p>
+              <button className="submit-button" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </>
+      ) : (
+        <Message>
+          <div className="wrong-password-content">
+            <p className="login-incorrect-password-message">
+              Incorrect Password/Username
+            </p>
+            <button
+              className="login-wrong-password-button"
+              onClick={() => {
+                setWrongPassword(!wrongPassword);
+              }}
+            >
+              Try again.
+            </button>
+          </div>
+        </Message>
+      )}
     </div>
   );
 };

@@ -1,0 +1,13 @@
+.decline-reason-pop-up {
+  border: solid 1px black;
+  height: 100vh;
+  background-color: rgba(19, 13, 13, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  border: solid 1px black;
+  background-color: white;
+}

@@ -25,6 +25,11 @@
   color: #527bec;
 }
 
+.forgot-password:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 textarea,
 input {
   background-color: #e0e0e0;
@@ -69,6 +74,7 @@ input:focus {
 
 .submit-button:hover {
   background-color: #3c3c44;
+  cursor: pointer;
 }
 
 /* manager approve/decline buttons */
@@ -101,4 +107,15 @@ input:focus {
 
 .process-claim:hover {
   background-color: #7b9af0;
+}
+
+.login-incorrect-password-message {
+  color: red;
+}
+
+.login-wrong-password-button {
+}
+
+.wrong-password-content .popup-inner {
+  border: solid red 2px;
 }
