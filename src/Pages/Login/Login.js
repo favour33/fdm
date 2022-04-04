@@ -105,6 +105,7 @@ const Login = () => {
               <label>
                 <p> {t("username")}</p>
                 <input
+                  className="login-text-box"
                   id="username"
                   type="text"
                   onChange={(e) => setUserName(e.target.value)}
@@ -115,6 +116,7 @@ const Login = () => {
               <label>
                 <p> {t("password")}</p>
                 <input
+                  className="login-text-box"
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   value={s_password}
@@ -124,7 +126,7 @@ const Login = () => {
               <div>
                 {/* <p className="forgot-password">Forgot Password?</p> */}
                 <button className="submit-button" type="submit">
-                  <p> {t("Login")}</p>
+                  <p> {t("submit")}</p>
                 </button>
               </div>
             </form>

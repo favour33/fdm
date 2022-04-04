@@ -9,7 +9,9 @@
   width: 50%;
   margin-left: 150px;
   padding-left: 20px;
-  height: 400px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  height: 450px;
   border-radius: 3px;
   position: relative;
 }
@@ -19,6 +21,12 @@
   top: 0;
   right: 0;
   width: 120px;
+}
+
+.login-text-box {
+  display: block;
+  height: 40px;
+  width: 350px;
 }
 
 .forgot-password {
@@ -64,7 +72,7 @@ input:focus {
   background-color: #202025;
   color: none;
   border: none;
-  padding: 10px;
+  padding: 7px 22px;
   color: white;
   margin-top: 25px;
   margin-bottom: 10px;
@@ -113,8 +121,8 @@ input:focus {
   color: red;
 }
 
-.login-wrong-password-button {
-}
+/* .login-wrong-password-button {
+} */
 
 .wrong-password-content .popup-inner {
   border: solid red 2px;

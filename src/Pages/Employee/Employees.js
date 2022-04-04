@@ -157,7 +157,7 @@ const Employees = () => {
                     <option value="0">Currency:</option>
                     <option value="1">EUR</option>
                     <option value="2">GBP</option>
-                    <option value="2">DOL</option>
+                    <option value="2">USD</option>
                   </select>
                   <label>Amount</label>
                   <input
@@ -176,7 +176,7 @@ const Employees = () => {
                     <option value="0">Currency:</option>
                     <option value="1">EUR</option>
                     <option value="2">GBP</option>
-                    <option value="2">DOL</option>
+                    <option value="2">USD</option>
                   </select>
                 </div>
               </div>
