@@ -11,14 +11,14 @@ import { initReactI18next, useTranslation } from "react-i18next";
 const translationEN = {
   welcome: "Welcome! PLease Log in ",
   username: "Username",
-  password: "Password!",
-  submit: "Submit!",
+  password: "Password",
+  submit: "Login",
 };
 const translationFr = {
-  welcome: "Bienvenue ! Veuillez vous connecter!",
+  welcome: "Bienvenue ! Veuillez vous connecter.",
   username: "nom d'utilisateur",
-  password: "Mot de passe!",
-  submit: "nous faire parvenir!",
+  password: "Mot de passe",
+  submit: "connexion",
 };
 
 i18next.use(initReactI18next).init({
@@ -124,7 +124,7 @@ const Login = () => {
               <div>
                 {/* <p className="forgot-password">Forgot Password?</p> */}
                 <button className="submit-button" type="submit">
-                  <p> {t("submit")}</p>
+                  <p> {t("Login")}</p>
                 </button>
               </div>
             </form>
