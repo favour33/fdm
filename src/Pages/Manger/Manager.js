@@ -193,7 +193,9 @@ const Manager = () => {
             {users
               .filter((user) => {
                 return (
-                  user.status === "APPROVED " || user.status === "DECLINED "
+                  user.status === "APPROVED " ||
+                  user.status === "DECLINED " ||
+                  user.status === "PROCESSED"
                 );
               })
               .map((user) => {

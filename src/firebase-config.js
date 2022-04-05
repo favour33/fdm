@@ -1,11 +1,7 @@
 // Help connect to our database
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC4RDpVh3cEEZmqr4ZuEKjCB4aXx7f0KvM",
@@ -18,10 +14,20 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
 
-export const db = getFirestore(app);
-
-export const signup = (email, password) => {
-  return createUserWithEmailAndPassword(auth, email, password);
+export const resetPassword = () => {
+  const auth = getAuth(app);
+  sendPasswordResetEmail(auth, "fnwachukwu84@gmail.com")
+    .then(() => {
+      // Password reset email sent!
+      // ..
+    })
+    .catch((error) => {
+      //const errorCode = error.code;
+      //const errorMessage = error.message;
+      // ..
+    });
 };
+
+export const auth = getAuth(app);
+export const db = getFirestore(app);
