@@ -3,7 +3,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import white from "../../logos/fdm-white.png";
+import black from "../../logos/fdm-black.png";
 import Message from "../../components/Message/Message";
+
+import useLocalStorage from "use-local-storage";
 
 import i18next from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
@@ -32,6 +35,13 @@ i18next.use(initReactI18next).init({
 });
 
 const Login = () => {
+  const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   const onChange = (event) => {
     i18next.changeLanguage(event.target.value);
   };
@@ -92,62 +102,76 @@ const Login = () => {
 
   return (
     <Suspense fallback="Loading...">
-      <div className="login-wrapper">
-        {wrongPassword === false ? (
-          <>
-            <select onChange={onChange}>
-              <option value="en">English</option>
-              <option value="fr">French</option>
-            </select>
-            <h1> {t("welcome")} </h1>
-            <form onSubmit={HandleSubmit}>
-              <img className="fdm-logo-white" src={white} alt="fdm logo"></img>
-              <label>
-                <p> {t("username")}</p>
-                <input
-                  className="login-text-box"
-                  id="username"
-                  type="text"
-                  onChange={(e) => setUserName(e.target.value)}
-                  value={s_username}
-                  required
-                />
-              </label>
-              <label>
-                <p> {t("password")}</p>
-                <input
-                  className="login-text-box"
-                  type="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={s_password}
-                  required
-                />
-              </label>
-              <div>
-                {/* <p className="forgot-password">Forgot Password?</p> */}
-                <button className="submit-button" type="submit">
-                  <p> {t("submit")}</p>
+      <div className="app">
+        <div className="login-wrapper" data-theme={theme}>
+          {wrongPassword === false ? (
+            <>
+              <div className="top-icons">
+                <div className="theme-toggle">
+                  <i onClick={switchTheme} class="fas fa-toggle-on"></i>
+                </div>
+                <div>
+                  <select onChange={onChange}>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                  </select>
+                </div>
+              </div>
+
+              <h1> {t("welcome")} </h1>
+              <form onSubmit={HandleSubmit}>
+                <img
+                  className="fdm-logo-white"
+                  src={theme === "light" ? white : black}
+                  alt="fdm logo"
+                ></img>
+                <label>
+                  <p> {t("username")}</p>
+                  <input
+                    className="login-text-box"
+                    id="username"
+                    type="text"
+                    onChange={(e) => setUserName(e.target.value)}
+                    value={s_username}
+                    required
+                  />
+                </label>
+                <label>
+                  <p> {t("password")}</p>
+                  <input
+                    className="login-text-box"
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={s_password}
+                    required
+                  />
+                </label>
+                <div>
+                  {/* <p className="forgot-password">Forgot Password?</p> */}
+                  <button className="submit-button" type="submit">
+                    <p> {t("submit")}</p>
+                  </button>
+                </div>
+              </form>
+            </>
+          ) : (
+            <Message>
+              <div className="wrong-password-content">
+                <p className="login-incorrect-password-message">
+                  Incorrect Password/Username
+                </p>
+                <button
+                  className="login-wrong-password-button"
+                  onClick={() => {
+                    setWrongPassword(!wrongPassword);
+                  }}
+                >
+                  Try again.
                 </button>
               </div>
-            </form>
-          </>
-        ) : (
-          <Message>
-            <div className="wrong-password-content">
-              <p className="login-incorrect-password-message">
-                Incorrect Password/Username
-              </p>
-              <button
-                className="login-wrong-password-button"
-                onClick={() => {
-                  setWrongPassword(!wrongPassword);
-                }}
-              >
-                Try again.
-              </button>
-            </div>
-          </Message>
-        )}
+            </Message>
+          )}
+        </div>
       </div>
     </Suspense>
   );

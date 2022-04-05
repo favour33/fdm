@@ -2,21 +2,72 @@
 /* light grey - #E0E0E0 */
 /* light blue - #2EABE3 */
 
+:root {
+  --background: #ffffff;
+  --text-primary: #000;
+  --input-bg: ##666666;
+  --border: #333;
+  --button-bg: #202025;
+  --button-col: white;
+  --border-col: black;
+  --bb: black;
+}
+
+[data-theme="dark"] {
+  --background: #202025;
+  --text-primary: #fff;
+  --input-bg: #6f6f6f;
+  --border: #808080;
+  --button-bg: #464647;
+  --button-col: black;
+  --border-col: rgb(147, 147, 147);
+  --bb: white;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background);
+}
+
+.top-icons {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+select {
+  margin-top: 6px;
+}
+
 .login-wrapper {
   margin-top: 300px;
   margin-left: 10px;
-  border: solid 1px black;
+  /* border: solid 3px black; */
+
+  box-shadow: 0px 0px 12px var(--border);
   width: 50%;
   margin-left: 150px;
   padding-left: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
   height: 450px;
+
   border-radius: 3px;
   position: relative;
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition: all 0.5s;
+}
+
+/* Light dark mode */
+.theme-toggle i {
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 .login-wrapper .fdm-logo-white {
+  transition: all 0.5s;
   position: absolute;
   top: 0;
   right: 0;
@@ -40,13 +91,14 @@
 
 textarea,
 input {
-  background-color: #e0e0e0;
+  background-color: #f0efef;
   color: #666666;
   width: 300px;
   height: 30px;
   border: none;
   border-radius: 10px;
   border: 2px solid transparent;
+  /* border-color: var(--border-col); */
   outline: none;
   font-size: 16px;
   line-height: 1.4;
@@ -69,7 +121,8 @@ input:focus {
 }
 
 .submit-button {
-  background-color: #202025;
+  background-color: var(--button-bg);
+  border-color: var(--bb);
   color: none;
   border: none;
   padding: 7px 22px;
