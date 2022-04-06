@@ -186,9 +186,34 @@ const Login = () => {
                   />
                 </label>
                 <div>
-                  <p onClick={resetPassword} className="forgot-password">
+                  <p
+                    onClick={() => {
+                      resetPassword();
+                      setShowPasswordResetModal(!showPasswordResetModal);
+                    }}
+                    className="forgot-password"
+                  >
                     {t("ForgotPassword")}
                   </p>
+                  {showPasswordResetModal === false ? (
+                    ""
+                  ) : (
+                    <>
+                      <Message>
+                        <p>
+                          Password Reset Email has been sent. Please check your
+                          email for further Instructions.
+                        </p>
+                        <button
+                          onClick={() => {
+                            setShowPasswordResetModal(!showPasswordResetModal);
+                          }}
+                        >
+                          Okay
+                        </button>
+                      </Message>
+                    </>
+                  )}
                   <button className="submit-button" type="submit">
                     <p> {t("submit")}</p>
                   </button>
