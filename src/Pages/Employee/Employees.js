@@ -153,7 +153,7 @@ const Employees = () => {
               <div>
                 <div className="first">
                   <p>Currency you gained the expense in: </p>
-                  <select>
+                  <select className="first-select">
                     <option value="0">Currency:</option>
                     <option value="1">EUR</option>
                     <option value="2">GBP</option>
@@ -183,7 +183,7 @@ const Employees = () => {
             </PopUP>
 
             {/* claim Evidence */}
-            <label>Claim Evidence</label>
+            <label>Claim Evidence (VAT receipt)</label>
             <input
               className="claim-evidence-text-box"
               // value={newEvidence}

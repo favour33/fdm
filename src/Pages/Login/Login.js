@@ -224,7 +224,7 @@ const Login = () => {
             <Message>
               <div className="wrong-password-content">
                 <p className="login-incorrect-password-message">
-                  Incorrect Password/Username
+                  Incorrect Username/Password
                 </p>
                 <button
                   className="login-wrong-password-button"

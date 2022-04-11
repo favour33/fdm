@@ -8,3 +8,19 @@
   width: 42px;
   max-width: 42px;
 }
+
+.manger-container {
+  border: solid 20px black;
+  padding-left: 75px;
+  width: 80%;
+  margin: auto;
+  height: 800px;
+}
+
+.finance-dep {
+  border: solid 20px black;
+  padding-left: 75px;
+  width: 80%;
+  margin: auto;
+  height: 800px;
+}

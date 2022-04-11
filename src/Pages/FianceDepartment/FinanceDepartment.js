@@ -36,7 +36,7 @@ const FinanceDepartment = () => {
     window.location.reload();
   };
   return (
-    <>
+    <div className="finance-dep">
       <Link className="link" to="/">
         LOG OUT{" "}
       </Link>
@@ -134,7 +134,7 @@ const FinanceDepartment = () => {
             })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

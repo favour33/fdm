@@ -10,11 +10,21 @@ button {
 label {
   display: inline-block;
   padding-bottom: 7px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+body {
+  font-size: 19px;
 }
 
 .employyes {
-  border: solid 2px black;
-  padding-left: 20px;
+  border: solid 20px black;
+  padding-left: 60px;
+  padding-right: 60px;
+  width: 70%;
+  margin: auto;
+  height: 1500px;
   position: relative;
 }
 
@@ -22,12 +32,14 @@ label {
   background-color: #202025;
   color: white;
   position: absolute;
-  right: 20px;
-  top: 10px;
-  padding: 20px;
+  right: 190px;
+  top: 50px;
+  padding: 23px;
   border-radius: 40px;
   text-decoration: none;
   transition: 0.15s;
+  font-size: larger;
+  font-weight: 700;
 }
 
 .link:hover {
@@ -57,9 +69,10 @@ label {
 }
 
 .convert-currency {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-left: 200px;
   height: 40px;
-  padding: 3px;
+  padding: 10px;
   transition: 0.15s;
   position: relative;
 }
@@ -70,13 +83,18 @@ label {
   color: white;
   /* for tool tops its opacity */
   opacity: 0;
-  bottom: -80px;
+  bottom: -120px;
   width: 300px;
   padding: 20px;
 
   border-radius: 4px;
   transition: opacity 0.3s;
   pointer-events: none;
+}
+
+.first-select {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .convert-currency:hover .tool-tips {
@@ -102,11 +120,12 @@ label {
 
 button {
   background-color: #1d88ec;
-  padding: 10px;
+  padding: 20px;
   color: white;
   border: none;
   border-radius: 10px;
   font-weight: bold;
+  font-size: large;
 }
 
 button:hover {
@@ -119,10 +138,10 @@ button:hover {
 
 .claim-evidence-text-box::-webkit-file-upload-button {
   background-color: #1d88ec;
-  padding-top: 5px;
-  padding-right: 10px;
-  padding-bottom: 5px;
-  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  padding-left: 15px;
   color: white;
   border: none;
   border-radius: 10px;
@@ -155,13 +174,13 @@ thead {
 }
 
 th {
-  padding: 10px;
+  padding: 22px;
   border-radius: 3px;
 }
 
 td {
   background-color: rgb(233, 233, 233);
-  padding: 8px;
+  padding: 30px;
 }
 
 /* p,
@@ -180,4 +199,9 @@ label {
 
 .image-link:hover {
   cursor: pointer;
+}
+
+.employyes textarea {
+  width: 500px;
+  height: 100px;
 }

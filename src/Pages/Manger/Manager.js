@@ -76,7 +76,7 @@ const Manager = () => {
   };
 
   return (
-    <div>
+    <div className="manger-container">
       <div>
         <Link className="link" to="/">
           LOG OUT{" "}
