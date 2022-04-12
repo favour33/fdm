@@ -8,7 +8,7 @@ button {
   display: block;
 }
 label {
-  display: inline-block;
+  /* display: inline-block; */
   padding-bottom: 7px;
   font-size: 18px;
   font-weight: 600;
@@ -33,7 +33,7 @@ body {
   color: white;
   position: absolute;
   right: 190px;
-  top: 50px;
+  top: 45px;
   padding: 23px;
   border-radius: 40px;
   text-decoration: none;

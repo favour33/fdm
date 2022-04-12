@@ -141,102 +141,106 @@ const Login = () => {
     <Suspense fallback="Loading...">
       <div className="app">
         <div className="login-wrapper" data-theme={theme}>
-          {wrongPassword === false ? (
-            <>
-              <div className="top-icons">
-                <div className="theme-toggle">
-                  <i onClick={switchTheme} class="fas fa-toggle-on"></i>
+          <div className="conny">
+            {wrongPassword === false ? (
+              <>
+                <div className="top-icons">
+                  <div className="theme-toggle">
+                    <i onClick={switchTheme} class="fas fa-toggle-on"></i>
+                  </div>
+                  <div>
+                    <select onChange={onChange}>
+                      <option value="en">English</option>
+                      <option value="fr">French</option>
+                      <option value="ge">German</option>
+                      <option value="sp">Spanish</option>
+                    </select>
+                  </div>
                 </div>
-                <div>
-                  <select onChange={onChange}>
-                    <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="ge">German</option>
-                    <option value="sp">Spanish</option>
-                  </select>
-                </div>
-              </div>
 
-              <h1> {t("welcome")} </h1>
-              <form onSubmit={HandleSubmit}>
-                <img
-                  className="fdm-logo-white"
-                  src={theme === "light" ? white : black}
-                  alt="fdm logo"
-                ></img>
-                <label>
-                  <p> {t("username")}</p>
-                  <input
-                    className="login-text-box"
-                    id="username"
-                    type="text"
-                    onChange={(e) => setUserName(e.target.value)}
-                    value={s_username}
-                    required
-                  />
-                </label>
-                <label>
-                  <p> {t("password")}</p>
-                  <input
-                    className="login-text-box"
-                    type="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={s_password}
-                    required
-                  />
-                </label>
-                <div>
-                  <p
-                    onClick={() => {
-                      resetPassword();
-                      setShowPasswordResetModal(!showPasswordResetModal);
-                    }}
-                    className="forgot-password"
-                  >
-                    {t("ForgotPassword")}
+                <h1> {t("welcome")} </h1>
+                <form onSubmit={HandleSubmit}>
+                  <img
+                    className="fdm-logo-white"
+                    src={theme === "light" ? white : black}
+                    alt="fdm logo"
+                  ></img>
+                  <label>
+                    <p> {t("username")}</p>
+                    <input
+                      className="login-text-box"
+                      id="username"
+                      type="text"
+                      onChange={(e) => setUserName(e.target.value)}
+                      value={s_username}
+                      required
+                    />
+                  </label>
+                  <label>
+                    <p> {t("password")}</p>
+                    <input
+                      className="login-text-box"
+                      type="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={s_password}
+                      required
+                    />
+                  </label>
+                  <div>
+                    <p
+                      onClick={() => {
+                        resetPassword();
+                        setShowPasswordResetModal(!showPasswordResetModal);
+                      }}
+                      className="forgot-password"
+                    >
+                      {t("ForgotPassword")}
+                    </p>
+                    {showPasswordResetModal === false ? (
+                      ""
+                    ) : (
+                      <>
+                        <Message>
+                          <p>
+                            Password Reset Email has been sent. Please check
+                            your email for further Instructions.
+                          </p>
+                          <button
+                            onClick={() => {
+                              setShowPasswordResetModal(
+                                !showPasswordResetModal
+                              );
+                            }}
+                          >
+                            Okay
+                          </button>
+                        </Message>
+                      </>
+                    )}
+                    <button className="submit-button" type="submit">
+                      <p> {t("submit")}</p>
+                    </button>
+                  </div>
+                </form>
+              </>
+            ) : (
+              <Message>
+                <div className="wrong-password-content">
+                  <p className="login-incorrect-password-message">
+                    Incorrect Username/Password
                   </p>
-                  {showPasswordResetModal === false ? (
-                    ""
-                  ) : (
-                    <>
-                      <Message>
-                        <p>
-                          Password Reset Email has been sent. Please check your
-                          email for further Instructions.
-                        </p>
-                        <button
-                          onClick={() => {
-                            setShowPasswordResetModal(!showPasswordResetModal);
-                          }}
-                        >
-                          Okay
-                        </button>
-                      </Message>
-                    </>
-                  )}
-                  <button className="submit-button" type="submit">
-                    <p> {t("submit")}</p>
+                  <button
+                    className="login-wrong-password-button"
+                    onClick={() => {
+                      setWrongPassword(!wrongPassword);
+                    }}
+                  >
+                    Try again.
                   </button>
                 </div>
-              </form>
-            </>
-          ) : (
-            <Message>
-              <div className="wrong-password-content">
-                <p className="login-incorrect-password-message">
-                  Incorrect Username/Password
-                </p>
-                <button
-                  className="login-wrong-password-button"
-                  onClick={() => {
-                    setWrongPassword(!wrongPassword);
-                  }}
-                >
-                  Try again.
-                </button>
-              </div>
-            </Message>
-          )}
+              </Message>
+            )}
+          </div>
         </div>
       </div>
     </Suspense>
