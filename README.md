@@ -40,23 +40,23 @@
 <br />
 
 <h2>Login Page</h2>
-<img src="images/login.png">
+<img src="src/github-images/login.png">
 <br />
 <br />
 <h2>Employee/Manager/Finance Department Pages</h2>
-<img src="images/main-pages.png">
+<img src="src/github-images/main-pages.png">
 <br />
 <br />
 <h2>Convert Currency Pop-up</h2>
-<img src="images/convert.png">
+<img src="src/github-images/convert.png">
 <br />
 <br />
 <h2>Mutli-language Support</h2>
-<img src="images/multi-lan-support.png">
+<img src="src/github-images/multi-lan-support.png">
 <br />
 <br />
 <h2>Dark mode Page</h2>
-<img src="images/dark-mode.png">
+<img src="src/github-images/dark-mode.png">
 
 <br />
 
