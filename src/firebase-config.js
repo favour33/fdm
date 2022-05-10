@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 
 export const resetPassword = () => {
   const auth = getAuth(app);
-  sendPasswordResetEmail(auth, "fnwachukwu84@gmail.com")
+  sendPasswordResetEmail(auth, "")
     .then(() => {
       // Password reset email sent!
       // ..

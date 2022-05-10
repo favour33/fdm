@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+<!-- Please update value in the {}  -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">FDM Expense App</h1>
 
-## Available Scripts
+<!-- <div align="center">
+   Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
+</div> -->
 
-In the project directory, you can run:
+<div align="center">
+  <h3>
+    <!-- <a href="#"
+    target="_blank">
+      Live Demo
+    </a> -->
+    <!-- <span> | </span>
+    <a href="https://github.com/favour33/error-404">
+      Code 
+    </a> -->
+    <!-- <span> | </span>
+    <a href="https://devchallenges.io/challenges/wBunSb7FPrIepJZAg0sY">
+      Challenge
+    </a> -->
+  </h3>
+</div>
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Overview](#overview)
+- [Built With](#built-with)
+- [Features](#features)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
-### `npm test`
+<!-- OVERVIEW -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Overview
 
-### `npm run build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2>Login Page</h2>
+<img src="images/login.png">
+<br />
+<br />
+<h2>Employee/Manager/Finance Department Pages</h2>
+<img src="images/main-pages.png">
+<br />
+<br />
+<h2>Convert Currency Pop-up</h2>
+<img src="images/convert.png">
+<br />
+<br />
+<h2>Mutli-language Support</h2>
+<img src="images/multi-lan-support.png">
+<br />
+<br />
+<h2>Dark mode Page</h2>
+<img src="images/dark-mode.png">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Where can I see a live demo?
 
-### `npm run eject`
+As FDM is a real company i cannot host a live demo of the application however screenshots are Provided above.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What was my experience? <br />
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+In a software engineering module I took, I was given a problem by a real company (FDM) and had to create a software solution for expense claims. From the problem definition I created user stories, from the user stories I was able to do the UX and creating user flows and the UI design including colour themes and ensuring accessibility.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+After that I began prototyping and created an application. After reviewing the application with the FDM clients I got feedback, from the feedback I was able to plan, design then further implement the features asked for. After all user stories were complete, I went further and added extra features that Imagined would benefit the users such as forgot password, currency convertor, multi-language support and light/dark mode.
 
-## Learn More
+<br />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### What have i learned/improved?<br />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br />
 
-### Code Splitting
+- Design/ Colour themes
+- Planning Features
+- Talking to stakeholders
+- Integrating Firebase Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br />
 
-### Analyzing the Bundle Size
+## Built With
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
-### Making a Progressive Web App
+- ReactJS
+- Firebase
+- CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<br />
 
-### Advanced Configuration
+## Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-### Deployment
+- Login Page
+- Forgot Password
+- Add an Expense Claim
+- View Expense Claim
+- Convert Currency
+- Approve Expense Claim
+- Decline Expense Claim
+- Process Expense Claim
+- Mutli-language support
+- Light/Dark Mode
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<br />
 
-### `npm run build` fails to minify
+## Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For exmpale -->
+
+- [FDM Website](https://www.fdmgroup.com)
+- [Firebase with React](https://www.pluralsight.com/guides/using-firebase-with-react-and-redux)
+
+- [Design Guide](https://www.checklist.design)
+
+<br />
+
+## Contact
+
+<!-- - Website [your-website.com](https://{your-web-site-link}) -->
+
+- GitHub [@favour33](https://github.com/favour33)
+- linkedin [@Favour Nwachukwu](https://www.linkedin.com/in/fn84/})
